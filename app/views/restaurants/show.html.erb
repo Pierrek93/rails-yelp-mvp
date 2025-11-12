@@ -1,0 +1,21 @@
+<div class="container">
+  <%= link_to("Back", :back, class: "btn btn-secondary") %>
+  <h1 class="display-4 mb-5">Restaurant information: </h1>
+
+  <ul class="list-group mb-2">
+    <li class="list-group-item"><%= "Name: #{@restaurant.name}" %></li>
+    <li class="list-group-item"><%= "Address: #{@restaurant.address}"%></li>
+    <li class="list-group-item"><%= "Cuisine: #{@restaurant.category}"%></li>
+  </ul>
+
+  <div class="d-flex flex-row-reverse  mb-3">
+    <%= link_to("Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary")  %>
+  </div>
+
+  <br>
+  <ul class="list-group list-group-flush">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item"><%= "#{review.rating}⭐ -- Review: #{review.content}" %></li>
+    <% end %>
+  </ul>
+</div>
